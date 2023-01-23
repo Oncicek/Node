@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 
 app.post("/kocka", (req: Request, res: Response, next: NextFunction) => {
   console.log(req.body);
-  res.sendStatus(200);
+  res.send(req.body);
 });
 
 app.use("/", (req: Request, res: Response, next: NextFunction) => {
