@@ -31,7 +31,20 @@ export const getProducts = (
   res: Response,
   next: NextFunction
 ) => {
-  Product.fetchAll((products) =>
-    res.render("shop", { products, hasProducts: products.length > 0 })
-  );
+  Product.fetchAll((products) => {
+    console.log(products);
+    res.render("shop", { products, hasProducts: products.length > 0 });
+  });
+};
+
+export const getProductsForAngular = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  Product.fetchAll((products) => {
+    console.log(products);
+    res.status(200).json(products);
+  });
+  next();
 };

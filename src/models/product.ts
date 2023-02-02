@@ -29,14 +29,13 @@ export class Product {
   }
 
   static delete(id: string) {
-    console.log("pica");
     getProductsFromFile((products) => {
       if (products instanceof Array<Product>) {
         const filteredProducts = products.filter(
           (product) => product.id !== id
         );
         fs.writeFile(path, JSON.stringify(filteredProducts), (err) => {
-          console.log("toto je error delete: ", err);
+          err && console.log("toto je error delete: ", err);
         });
       }
     });
@@ -54,7 +53,7 @@ export class Product {
         products = [this];
       }
       fs.writeFile(path, JSON.stringify(products), (err) => {
-        console.log("toto je error save: ", err);
+        err && console.log("toto je error save: ", err);
       });
     });
   }
